@@ -1,13 +1,17 @@
 <template>
   <ul class="list-group">
-    <li v-for="item in items" :key="item[idKey]" class="list-group-item">
+    <li
+      v-for="item in items"
+      :key="item[idKey]"
+      class="list-group-item ul-text"
+      @click.stop="toggleItem(item[idKey])"
+      @click="selectItem(item[idKey])"
+    >
       <div
         class="d-flex align-items-center"
         :class="{ 'text-primary fw-bold': item[idKey] === selectedItemId }"
-        @click.stop="toggleItem(item[idKey])"
-        @click="selectItem(item[idKey])"
       >
-        <span class="me-2 ul-text" @click.stop="toggleItem(item[idKey])">
+        <span class="me-2">
           {{ isOpen(item[idKey]) ? '📂' : '📁' }}
         </span>
         <span class="ul-text">{{ item[nameKey] }}</span>
